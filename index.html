@@ -137,13 +137,14 @@
         <div class="flow-node"><span class="flow-step">07</span><strong>记录与质检</strong><small>录音 · 脱敏 · 质检</small></div>
       </div>
       <div class="flow-branches">
-        <span class="flow-branch-label">编排决策的分支</span>
+        <span class="flow-branch-label">编排决策的分支 · 按条件选择下一步</span>
         <div class="flow-branch-grid">
-          <div class="flow-branch"><span>知识检索</span><small>RAG · 向量库</small></div>
-          <div class="flow-branch"><span>业务工具</span><small>查询 · 办理</small></div>
-          <div class="flow-branch"><span>转人工</span><small>坐席接续</small></div>
+          <div class="flow-branch"><span>知识检索</span><small>条件 · 需基于知识回答</small><p>RAG 检索知识库，生成有依据的回复。</p></div>
+          <div class="flow-branch"><span>业务工具</span><small>条件 · 需查询或办理业务</small><p>调用业务工具，返回结果并组织回复。</p></div>
+          <div class="flow-branch"><span>转人工</span><small>条件 · 客户要求或无法处理</small><p>转接坐席，上下文随会话移交。</p></div>
         </div>
       </div>
+      <div class="flow-loop"><span class="flow-loop-icon" aria-hidden="true">↻</span><span>多轮对话与兜底：未解决时回到「意图理解」继续；无法识别或超出能力时，澄清重问或转人工。</span></div>
       <p class="flow-note">编排逻辑为流程示意；实际对话状态机以 IntelliCall-Pro 的 LangGraph 实现为准，知识、工具与转人工需按业务配置接入。</p>
     </div>
   </section>
