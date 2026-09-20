@@ -83,6 +83,25 @@ const scenarios = {
       ['连接坐席', '由呼叫引擎完成转接', 'FreeSWITCH 执行转接。技能组分配需要与呼叫中心路由能力进行集成。', '状态：正在连接人工坐席'],
       ['人工服务', '由专业团队继续沟通', '人工坐席继续处理问题；跨系统上下文同步需接入对应业务接口。', '坐席：“您好，请问有什么可以帮您？”']
     ]
+  },
+  outbound: {
+    kicker: 'SMART OUTBOUND',
+    title: '主动触达，也有节奏、有边界',
+    description: '以任务组织外呼名单，坐席经工作台主动外呼并记录结果；预测式外呼、号码频控与外呼合规为预留能力，需接入线路与策略配置。',
+    features: ['按任务组织外呼名单', '坐席主动外呼与结果记录', '预测式外呼 · 预留'],
+    source: '外呼流程示例',
+    messages: [
+      ['ai', '您好，这里是声枢外呼中心，方便耽误您两分钟吗？'],
+      ['user', '可以，请讲。'],
+      ['ai', '了解到您近期体验过我们的产品，想了解一下使用感受。'],
+      ['user', '体验不错，希望后续的电话别太频繁。']
+    ],
+    steps: [
+      ['外呼任务', '组织需要触达的客户', '按业务目标建立外呼任务，准备客户名单、话术与拨打策略。', '示例任务：产品体验回访名单'],
+      ['坐席外呼', '由坐席发起呼叫', '坐席通过工作台与软电话发起呼出，呼叫中心负责线路与通话控制。', '坐席：“您好，这里是声枢外呼中心。”'],
+      ['预测外呼', '按策略自动分配', '预留能力：按坐席空闲与接听率预测拨号，减少等待并提升效率。', '预留：预测式外呼需接入拨号策略'],
+      ['合规与结果', '有边界地触达与沉淀', '记录外呼结果与客户偏好；号码频控、黑名单与外呼时段限制为预留合规能力。', '结果：登记体验反馈与拨打偏好']
+    ]
   }
 };
 let selectedScenario = 'service';
@@ -121,7 +140,8 @@ function renderScenario(key) {
   });
   select('#scenario-panel').setAttribute('aria-labelledby', 'tab-' + key);
   const assistantLabel = select('.conversation-header strong');
-  assistantLabel.textContent = key === 'followup' ? '声枢 · 坐席回访' : '声枢 AI 助手';
+  const labels = { followup: '声枢 · 坐席回访', outbound: '声枢 · 智能外呼' };
+  assistantLabel.textContent = labels[key] || '声枢 AI 助手';
 }
 const tabs = selectAll('.scenario-tab');
 tabs.forEach(tab => {

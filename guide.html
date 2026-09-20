@@ -17,6 +17,10 @@
         <div class="status-card"><h3>知识、工具与合规模块 <span class="status-label pending">模块已交付，需集成验证</span></h3><p>包括 RAG、业务工具、PII 脱敏、录音加密、留存清理和异步质检。录音与质检默认关闭，需按目标业务启用；合规模块尚未完成实机拨测。</p></div>
         <div class="status-card"><h3>高可用与多副本 <span class="status-label pending">配置待实机验证</span></h3><p>已有 FreeSWITCH 池化、Kamailio 前置、ASR/TTS 多副本与 track-calls 等代码或配置，但相关配置尚未完成实机拨测，不作可用性或并发量承诺。</p></div>
         <div class="status-card"><h3>自动化回归 <span class="status-label">测试框架已实现</span></h3><p>ai-call-center-test 的 README 记录覆盖 38 个前端页面，提供冒烟、baseline、模块增量和 UI 适配器。覆盖范围不等于当前全部通过，需对目标环境执行验证。</p></div>
+        <div class="status-card"><h3>外呼与任务触达 <span class="status-label pending">预留 · 规划中</span></h3><p>坐席可经工作台与软电话发起呼出并记录结果；任务外呼、预测式外呼、自动外呼，以及号码频控、黑名单与外呼时段等合规策略尚未实现，需在呼叫引擎与合规层面补充。</p></div>
+        <div class="status-card"><h3>实时监控与运营大屏 <span class="status-label pending">预留 · 规划中</span></h3><p>队列与坐席实时看板、通话监听与实时指标大屏尚未实现，当前以历史通话记录与运营报表为主。</p></div>
+        <div class="status-card"><h3>工单与客户管理 <span class="status-label pending">预留 · 规划中</span></h3><p>工单创建与流转、来电弹屏、客户画像与标签等尚未实现，需要独立业务系统，或与现有 CRM 完成接口集成。</p></div>
+        <div class="status-card"><h3>开放平台与统一 API <span class="status-label pending">预留 · 规划中</span></h3><p>各项目已有内部接口与 WebSocket 能力，但尚未提供统一的开放 API 门户、SDK 与 HTTP IVR 集成规范，面向外部集成需进一步收敛。</p></div>
       </div></section>
       <section id="architecture-guide"><p class="eyebrow">ARCHITECTURE</p><h2>根据业务阶段，组合合适的能力。</h2><h3>人工服务优先</h3><p>使用 <code>ai-call-center</code> 处理 FreeSWITCH 事件、路由与坐席状态，搭配 <code>ai-call-center-web</code> 做配置、运营与浏览器通话。底层服务采用 Spring Boot、Redis、业务数据库和 MinIO。</p><h3>AI 优先接待</h3><p>IntelliCall-Pro 使用 Python + LangGraph 编排通话状态，FunASR 识别语音，LlamaIndex + pgvector 检索知识，CosyVoice 合成回复。当前大模型适配为 Claude，其他模型需按接口接入并验证工具调用。</p><h3>关于数据部署边界</h3><p>语音识别、合成、数据库和编排服务可在自有环境运行。是否有数据传出环境，取决于你使用的模型 API 和其他业务接口；使用外部大模型 API 时，相关文本会发送到所选服务。</p><p>详细架构与实施状态见 <a href="https://github.com/dongjb741280/IntelliCall-Pro/blob/main/docs/architecture-spec.md" target="_blank" rel="noopener noreferrer">IntelliCall-Pro 架构规格</a>，仓库默认分支若有变化，请从仓库首页进入文档。</p></section>
       <section id="quick-start"><p class="eyebrow">GET STARTED</p><h2>从一条可验证的链路开始。</h2><ol class="guide-steps">
