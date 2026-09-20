@@ -32,8 +32,6 @@ Pages 计划地址：https://dongjb741280.github.io/voxhub-portal/
 IntelliCall-Pro 的半双工、整句 ASR/TTS 和尚未实机验证的高可用/合规模块在指南中明确说明。没有使用未经验证的性能数字、客户 Logo 或商业承诺。
 ai-call-center-test 没有已配置的 GitHub 远程，因此门户指向本地编写的介绍章节，不杜撰仓库地址。
 
-参考 https://voice9.com/#/ 的产品内容组织方式（呼叫、路由、AI、人机协作与业务场景）。未复用其文案、图片、联系方式、公司信息或性能指标；品牌、图形与页面均为本项目独立实现。
-
 ## 修改
 `index.html`：首页内容；`guide.html`：指南；`assets/style.css`：视觉与响应式样式；`assets/main.js`：场景和演示数据。
 `scripts/serve.mjs`：本地静态服务器；`scripts/build.mjs`：仅复制发布所需文件；`tests/site.test.mjs`：内部链接与资源校验。
