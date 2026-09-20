@@ -20,7 +20,7 @@
     <a href="./index.html" class="brand" aria-label="声枢 VoxHub 首页"><img src="./assets/favicon.svg" width="36" height="36" alt=""><span>声枢<span class="brand-en">VoxHub</span></span></a>
     <button class="menu-toggle" aria-label="打开导航菜单" aria-controls="navigation" aria-expanded="false"><span></span><span></span><span></span></button>
     <nav id="navigation" class="navigation" aria-label="主导航">
-      <a href="#capabilities">产品能力</a><a href="#scenarios">应用场景</a><a href="#architecture">技术架构</a><a href="#ecosystem">项目生态</a>
+      <a href="#capabilities">产品能力</a><a href="#scenarios">应用场景</a><a href="#architecture">技术架构</a><a href="#orchestration">流程编排</a><a href="#ecosystem">项目生态</a>
     </nav>
     <div class="header-actions"><a class="docs-link" href="./guide.html">开发者文档 <span aria-hidden="true">↗</span></a><a class="button button-small" href="#start">开始探索 <span aria-hidden="true">→</span></a></div>
   </div>
@@ -124,8 +124,32 @@
     </div>
   </section>
 
+  <section class="section orchestration" id="orchestration" aria-labelledby="orchestration-title">
+    <div class="container">
+      <div class="section-heading"><div><p class="eyebrow">04 / 业务流程编排</p><h2 id="orchestration-title">把每一步，编排成一次服务。</h2></div><p class="section-intro">从呼叫接入到服务完成，用状态机把识别、理解、知识与转人工连接起来，<br class="desktop-only">让每一次通话都有清晰、可扩展的路径。</p></div>
+      <div class="flow" aria-label="业务流程编排示意：呼叫接入、语音识别、意图理解、编排决策、语音合成、服务完成与记录质检">
+        <div class="flow-node"><span class="flow-step">01</span><strong>呼叫接入</strong><small>SIP / WebRTC 呼入</small></div><span class="flow-arrow" aria-hidden="true">→</span>
+        <div class="flow-node"><span class="flow-step">02</span><strong>语音识别</strong><small>ASR 整句转写</small></div><span class="flow-arrow" aria-hidden="true">→</span>
+        <div class="flow-node"><span class="flow-step">03</span><strong>意图理解</strong><small>大模型理解需求</small></div><span class="flow-arrow" aria-hidden="true">→</span>
+        <div class="flow-node flow-hub"><span class="flow-step">04</span><strong>编排决策</strong><small>LangGraph 状态机</small></div><span class="flow-arrow" aria-hidden="true">→</span>
+        <div class="flow-node"><span class="flow-step">05</span><strong>语音合成</strong><small>TTS 整句合成</small></div><span class="flow-arrow" aria-hidden="true">→</span>
+        <div class="flow-node"><span class="flow-step">06</span><strong>服务完成</strong><small>应答 / 转接坐席</small></div><span class="flow-arrow" aria-hidden="true">→</span>
+        <div class="flow-node"><span class="flow-step">07</span><strong>记录与质检</strong><small>录音 · 脱敏 · 质检</small></div>
+      </div>
+      <div class="flow-branches">
+        <span class="flow-branch-label">编排决策的分支</span>
+        <div class="flow-branch-grid">
+          <div class="flow-branch"><span>知识检索</span><small>RAG · 向量库</small></div>
+          <div class="flow-branch"><span>业务工具</span><small>查询 · 办理</small></div>
+          <div class="flow-branch"><span>转人工</span><small>坐席接续</small></div>
+        </div>
+      </div>
+      <p class="flow-note">编排逻辑为流程示意；实际对话状态机以 IntelliCall-Pro 的 LangGraph 实现为准，知识、工具与转人工需按业务配置接入。</p>
+    </div>
+  </section>
+
   <section class="section ecosystem" id="ecosystem" aria-labelledby="ecosystem-title">
-    <div class="container"><div class="section-heading"><div><p class="eyebrow">04 / 项目生态</p><h2 id="ecosystem-title">各有所长，一起构建。</h2></div><p class="section-intro">从业务底座到智能编排，从日常运营到质量验证。<br class="desktop-only">四个项目，连接一条持续演进的产品路径。</p></div>
+    <div class="container"><div class="section-heading"><div><p class="eyebrow">05 / 项目生态</p><h2 id="ecosystem-title">各有所长，一起构建。</h2></div><p class="section-intro">从业务底座到智能编排，从日常运营到质量验证。<br class="desktop-only">四个项目，连接一条持续演进的产品路径。</p></div>
       <div class="project-grid">
         <article class="project-card"><div class="project-heading"><span class="project-symbol">⌘</span><span class="project-type">通信与业务</span></div><h3>呼叫中心引擎</h3><code>ai-call-center</code><p>承载呼叫控制、多租户、智能路由和技能组，构建人工服务与 AI 接入的业务底座。</p><div class="project-bottom"><span>Java · FreeSWITCH</span><a href="https://github.com/dongjb741280/ai-call-center" target="_blank" rel="noopener noreferrer" aria-label="在 GitHub 查看 ai-call-center">↗</a></div></article>
         <article class="project-card"><div class="project-heading"><span class="project-symbol">▦</span><span class="project-type">前端与运营</span></div><h3>坐席管理工作台</h3><code>ai-call-center-web</code><p>基于 Vue 3 的管理界面，整合 SIP 分机、网关配置、通话记录、运营报表与软电话。</p><div class="project-bottom"><span>Vue 3 · Element Plus</span><a href="https://github.com/dongjb741280/ai-call-center-web" target="_blank" rel="noopener noreferrer" aria-label="在 GitHub 查看 ai-call-center-web">↗</a></div></article>
@@ -144,7 +168,7 @@
 
   <section class="start-section" id="start"><div class="container"><div class="start-panel"><div class="start-decoration" aria-hidden="true">(((</div><div><p class="eyebrow">YOUR NEXT CONVERSATION STARTS HERE</p><h2>让更好的客户沟通，<br>从这里开始。</h2><p>了解项目，选择适合你的能力，构建自己的智能联络平台。</p></div><div class="start-actions"><a href="./guide.html" class="button button-light">阅读部署与接入指南 <span aria-hidden="true">↗</span></a><a href="https://github.com/dongjb741280/ai-call-center" target="_blank" rel="noopener noreferrer" class="start-github">在 GitHub 探索项目 <span aria-hidden="true">↗</span></a></div></div></div></section>
 </main>
-<footer class="footer"><div class="container"><div class="footer-main"><div class="footer-brand"><a href="./index.html" class="brand"><img src="./assets/favicon.svg" width="34" height="34" alt=""><span>声枢<span class="brand-en">VoxHub</span></span></a><p>连接每一种声音，成就每一次服务。</p></div><div><strong>探索产品</strong><a href="#capabilities">产品能力</a><a href="#scenarios">应用场景</a></div><div><strong>开发者</strong><a href="./guide.html">部署与接入</a><a href="#ecosystem">项目生态</a></div><div><strong>关于声枢</strong><a href="./guide.html#about">项目介绍</a><a href="./guide.html#capability-status">能力与进展</a></div></div><div class="footer-bottom"><span>© <span data-year>2026</span> 声枢 VoxHub</span><span>用技术连接，用服务回应。<span class="footer-dot">●</span> 静态产品门户</span></div></div></footer>
+<footer class="footer"><div class="container"><div class="footer-main"><div class="footer-brand"><a href="./index.html" class="brand"><img src="./assets/favicon.svg" width="34" height="34" alt=""><span>声枢<span class="brand-en">VoxHub</span></span></a><p>连接每一种声音，成就每一次服务。</p></div><div><strong>探索产品</strong><a href="#capabilities">产品能力</a><a href="#scenarios">应用场景</a><a href="#orchestration">流程编排</a></div><div><strong>开发者</strong><a href="./guide.html">部署与接入</a><a href="#ecosystem">项目生态</a></div><div><strong>关于声枢</strong><a href="./guide.html#about">项目介绍</a><a href="./guide.html#capability-status">能力与进展</a></div></div><div class="footer-bottom"><span>© <span data-year>2026</span> 声枢 VoxHub</span><span>用技术连接，用服务回应。<span class="footer-dot">●</span> 静态产品门户</span></div></div></footer>
 <dialog id="demo-dialog" class="demo-dialog" aria-labelledby="demo-title"><div class="demo-modal-header"><span class="eyebrow">交互演示 · 预设示例</span><button class="close-button" data-demo-close aria-label="关闭演示">×</button></div><h2 id="demo-title">一次服务，如何发生？</h2><p class="demo-intro">点击下一步，体验从呼叫接入到服务完成的过程。</p><ol class="demo-steps" id="demo-steps"><li class="current">呼叫接入</li><li>识别与理解</li><li>知识与业务</li><li>服务完成</li></ol><div class="demo-stage" aria-live="polite" aria-atomic="true"><span id="demo-step-label">01 / 呼叫接入</span><h3 id="demo-step-title">客户拨入服务号码</h3><p id="demo-step-text">FreeSWITCH 接收呼叫，并将会话交给语音编排服务。</p><div class="demo-quote" id="demo-step-quote">客户：“产品可以部署在自己的服务器吗？”</div></div><div class="demo-controls"><button class="text-link" id="demo-restart">重新开始</button><button class="button" id="demo-next">下一步 <span aria-hidden="true">→</span></button></div><p class="demo-disclaimer">本演示不使用麦克风，不拨打电话；内容为预设流程示例。</p></dialog>
 </body>
 </html>
